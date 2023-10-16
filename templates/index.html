@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Ethereum Blockchain Explorer</title>
+    <link rel="stylesheet" href="../static/styles.css">
+</head>
+
+<body>
+<img
+        src="../static/images/Eth_Logo.png"
+        alt="Ethereum Logo"
+        class="center"
+/>
+<h1> Ethereum Blockchain Explorer </h1>
+
+
+<div class="form-container">
+    <form action="/process_form" method="POST">
+        <label for="inputField">Enter Transaction ID:</label>
+        <input type="text" id="inputField" name="inputField"/>
+        <br/>
+        <button type="submit" class="submit-button">Submit</button>
+    </form>
+</div>
+
+<table>
+    <th>Parameter</th>
+    <th>Details</th>
+    <tr>
+        <td>Connection Status</td>
+        <td>{{ connection }}</td>
+    </tr>
+    <tr>
+        <td>Latest Block Number</td>
+        <td>{{ block }}</td>
+    </tr>
+    <tr>
+        <td>Latest Block Timestamp</td>
+        <td>{{ latest_block.timestamp }}</td>
+    </tr>
+</table>
+
+<div class="main-box">
+    {% if input %}
+    <div class="box-title">Transaction Analysis Summary</div>
+    <div class="box-content">
+        <p class="box-msg">Block Hash: {{input.blockHash}}</p>
+        <p>Block Number: {{input.blockNumber}}</p>
+        <p>Transaction Date:</p>
+        <p>From:{{input.from}}</p>
+        <p>To:{{input.to}}</p>
+        <p>Transaction Hash:{{input.hash}}</p>
+        {% endif %}
+    </div>
+</div>
+
+</body>
+
+</html>
